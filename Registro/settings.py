@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-p&6_!n!d)8o9gd%i_+9^$%5a_c2l%n9&g3zudhmljd9$u@^qx$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", ".onrender.com", ".up.railway.app"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -125,11 +125,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
