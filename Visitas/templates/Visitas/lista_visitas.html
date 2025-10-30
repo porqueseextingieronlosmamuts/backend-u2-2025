@@ -1,0 +1,37 @@
+{% extends 'visitas/base.html' %}
+
+{% block title %}
+  Lista de Visitas
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-2xl font-bold mb-4 text-indigo-700">Lista de Visitas</h1>
+  <a href="{% url 'nueva_visita' %}" class="bg-indigo-500 text-white px-4 py-2 rounded mb-4 inline-block hover:scale-105 transition-all ease-in">Nueva Visita</a>
+  <table class="min-w-full bg-indigo-50">
+    <thead>
+      <tr>
+  <th class="py-2 px-4 border-b text-indigo-800 text-center">Nombre</th>
+  <th class="py-2 px-4 border-b text-indigo-800 text-center">Rut</th>
+  <th class="py-2 px-4 border-b text-indigo-800 text-center">Motivo de visita</th>
+  <th class="py-2 px-4 border-b text-indigo-800 text-center">Hora de entrada y salida</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for visita in visitas %}
+        <tr>
+          <td class="py-2 px-4 border-b text-indigo-700 text-center">{{ visita.nombre }}</td>
+          <td class="py-2 px-4 border-b text-indigo-700 text-center">{{ visita.rut }}</td>
+          <td class="py-2 px-4 border-b text-indigo-700 text-center">{{ visita.motivo_de_visita }}</td>
+          <td class="py-2 px-4 border-b text-indigo-700 text-center">{{ visita.hora_entrada_y_salida_str }}</td>
+          <td class="py-2 px-4 border-b,">
+            <menu class="flex flex-row gap-2 items-center">
+              <a href="{% url 'detalle_visita' visita.id %}" class="bg-indigo-500 hover:scale-105 transition-all ease-in px-2 py-1 rounded text-white">Ver</a>
+              <a href="{% url 'editar_visita' visita.id %}" class="bg-yellow-500 hover:scale-105 transition-all ease-in px-2 py-1 rounded text-white">Editar</a>
+              <a href="{% url 'eliminar_visita' visita.id %}" class="bg-red-500 hover:scale-105 transition-all ease-in px-2 py-1 rounded text-white">Eliminar</a>
+            </menu>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

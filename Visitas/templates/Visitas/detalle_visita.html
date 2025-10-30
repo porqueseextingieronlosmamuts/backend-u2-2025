@@ -1,0 +1,18 @@
+{% extends 'visitas/base.html' %}
+
+{% block title %}
+  Detalle de la visita
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-2xl font-bold mb-4 text-indigo-700">Detalle de la visita</h1>
+  <div class="bg-indigo-50 p-4 rounded shadow">
+    <div class="flex flex-col items-center text-center">
+      <h2 class="text-xl font-bold text-indigo-800">{{ visita.nombre }}</h2>
+      <p class="mt-2 text-indigo-600">{{ visita.rut }}</p>
+      <p class="mt-2 text-indigo-600">motivo de visita: {{ visita.motivo_de_visita }}</p>
+  <p class="mt-2 text-indigo-600">hora de entrada y salida: {{ visita.hora_entrada_y_salida_str }}</p>
+    </div>
+    <a href="{% url 'lista_visitas' %}" class="hover:scale-105 transition-all ease-in mt-4 inline-block bg-indigo-500 text-white px-4 py-2 rounded">Volver a la lista</a>
+  </div>
+{% endblock %}

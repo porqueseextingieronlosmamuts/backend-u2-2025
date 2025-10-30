@@ -1,0 +1,15 @@
+{% extends 'visitas/base.html' %}
+
+{% block title %}
+  Eliminar visita
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-2xl font-bold mb-4 text-indigo-700">Eliminar visita</h1>
+  <form method="post" class="bg-indigo-50 p-4 rounded shadow">
+    {% csrf_token %}
+    <p>¿Estás seguro de que deseas eliminar la visita wue? "{{ visita.nombre }}"?</p>
+  <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Eliminar</button>
+  <a href="{% url 'lista_visitas' %}" class="hover:scale-105 transition-all ease-in ml-4 bg-indigo-500 text-white px-4 py-2 rounded">Cancelar</a>
+  </form>
+{% endblock %}
