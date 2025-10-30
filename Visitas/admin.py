@@ -15,7 +15,7 @@ class VisitaAdmin(admin.ModelAdmin):
  
 @admin.action(description="Marcar salidas")
 def marcar_salidas(modeladmin, request, queryset):
-    updated = queryset.update(marcar_salidas=True)
+    updated = queryset.update(marcar=True)
     modeladmin.message_user(request, f"{updated} ventas anuladas.")
  
 
