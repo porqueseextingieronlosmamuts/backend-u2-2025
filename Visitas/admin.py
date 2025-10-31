@@ -12,7 +12,7 @@ class VisitaAdmin(admin.ModelAdmin):
 	list_per_page = 25
 	actions = ['marcar_salida']
 
-	@admin.action(description='Marcar salida (poner fecha_de_salida = ahora) para las visitas seleccionadas que no tengan salida')
+	@admin.action(description='Marcar salida para las visitas seleccionadas que no tengan salida')
 	def marcar_salida(self, request, queryset):
 		pendientes = queryset.filter(fecha_de_salida__isnull=True)
 		updated = pendientes.update(fecha_de_salida=timezone.now())
