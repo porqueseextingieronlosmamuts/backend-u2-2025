@@ -9,6 +9,8 @@ router.register(r"groups", views.GroupViewSet)
 
 urlpatterns = [
     path("",views.lista_visitas, name="lista_visitas"),
+    path("", include(router.urls)),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("visitas/<int:id>/", views.detalle_visita, name="detalle_visita"),
     path("nueva_visita/", views.nueva_visita, name="nueva_visita"),
     path("editar_visita/<int:id>/", views.editar_visita, name="editar_visita"),
