@@ -1,10 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import Group, User
 from rest_framework import permissions, viewsets
-from .serializers import GroupSerializer, UserSerializer
+from .serializers import GroupSerializer, UserSerializer,VistaSerializer
 from .models import Visita
 from django.utils import timezone
 from .forms import VisitaForm
+
+class VisitaViewSet(viewsets.ModelViewSet):
+    queryset = Visita.objects.all().order_by("nombre")
+    serializer_class = VistaSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 class UserViewSet(viewsets.ModelViewSet):
     """
