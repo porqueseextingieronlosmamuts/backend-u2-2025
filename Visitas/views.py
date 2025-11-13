@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import Group, User
+from django.contrib.auth.decorators import login_required
 from rest_framework import permissions, viewsets
 from .serializers import GroupSerializer, UserSerializer,VistaSerializer
 from .models import Visita
@@ -29,11 +30,12 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-
+@login_required
 def lista_visitas(request):
     hoy = timezone.now().date()
     visitas = Visita.objects.filter(hora_de_entrada_y_salida__date=hoy)
     return render(request, 'lista_visitas.html', {'visitas': visitas})
+
 
 def detalle_visita(request, id):
     visita = get_object_or_404(Visita, id=id)
