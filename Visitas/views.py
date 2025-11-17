@@ -30,16 +30,17 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-@login_required
+
 def lista_visitas(request):
     hoy = timezone.now().date()
     visitas = Visita.objects.filter(hora_de_entrada_y_salida__date=hoy)
     return render(request, 'lista_visitas.html', {'visitas': visitas})
 
-
+@login_required
 def detalle_visita(request, id):
     visita = get_object_or_404(Visita, id=id)
     return render(request, 'detalle_visita.html', {'visita': visita})
+
 
 def nueva_visita(request):
     if request.method == 'POST':
