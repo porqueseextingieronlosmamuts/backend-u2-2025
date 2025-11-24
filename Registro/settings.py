@@ -85,6 +85,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://frontend-u2-2025-production.up.railway.app",
     "http://127.0.0.1:8000",
     "http://localhost:3000",
+    "https://max-llan.github.io",
 ]
 
 CORS_ALLOW_METHODS = [
